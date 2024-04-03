@@ -1,0 +1,842 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+
+body {
+    color: #202020;
+    font-family: "Noto Serif JP", serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    background: #F6F6F6;
+    padding-top: 100px;
+    margin: 0;
+}
+
+a {
+    color: #202020;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+
+
+
+
+
+/*   header   */
+
+.gtranslate_wrapper {}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    padding: 0 1.5%;
+    align-items: center;
+    /* justify-content: space-between; */
+    background: #F6F6F6;
+
+    z-index: 10;
+}
+
+.logo {
+    display: block;
+    width: inherit;
+    height: 100px;
+    line-height: 100px;
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+
+.logo-img {
+    width: 84px;
+    height: 84px;
+    margin: 8px 16px 8px 8px;
+}
+
+.header-nav {
+    height: 100px;
+}
+
+.header-nav ul {
+    /* width: 53%; */
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+
+.header-nav ul li a {
+    display: block;
+    height: 100%;
+    line-height: 100px;
+    padding: 0 3rem;
+}
+
+.header-nav ul li a:hover {
+    background: #ececec;
+    transition: .6s ease;
+}
+
+.hamburger-menu,
+.toggle_btn,
+.mask {
+    display: none;
+}
+
+
+/*    main    */
+
+
+/*   動き確認   */
+
+/*  hover時右から左  */
+
+.btn-ltor {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    /*レイアウトチェック用*/
+    /* border: 1px solid #FFF; */
+    /* width: 300px;
+    height: 50px; */
+
+    transition: ease .2s;
+}
+
+.btn-ltor .ltor {
+    display: block;
+    position: relative;
+    z-index: 3;
+    transition: ease .3s;
+    /*レイアウトチェック用*/
+    /* line-height: 50px; */
+}
+
+.btn-ltor:hover {
+    color: #F6F6F6;
+}
+
+.btn-ltor::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    background: #202020d9;
+    transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(0, 1);
+    transform-origin: right top;
+}
+
+.btn-ltor:hover::before {
+    transform-origin: left top;
+    transform: scale(1, 1);
+}
+
+
+/*  フェードイン 下からふわ  */
+
+.fadeIn-10 {
+    animation-name: fadeUpAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeIn-50 {
+    animation-name: fadeUpAnime-access;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime-access {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeUp,
+h3 {
+    opacity: 0;
+}
+
+/*  流れる枠  */
+
+.border-fadeIn {
+    max-width: 300px;
+    height: 60px;
+    display: inline-block;
+    position: relative;
+    /*レイアウトチェック用*/
+    /* line-height: 50px; */
+    /* transition: all .6s ease; */
+}
+
+.border-fadeIn .border {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    /*レイアウトチェック用*/
+    /* border: 1px solid red; */
+}
+
+.border-fadeIn::before,
+.border-fadeIn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #202020;
+    transition: all 1s ease;
+}
+
+.border-fadeIn .border::before,
+.border-fadeIn .border::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #202020;
+    transition: all 1s ease;
+
+}
+
+.border-fadeIn::before,
+.border-fadeIn .border::before {
+    width: 10%;
+    height: 1px;
+}
+
+.border-fadeIn::after,
+.border-fadeIn .border::after {
+    width: 1px;
+    height: 10%;
+}
+
+.border-fadeIn.active::before,
+.border-fadeIn .border.active::before {
+    width: 100%;
+}
+
+.border-fadeIn.active::after,
+.border-fadeIn .border.active::after {
+    height: 100%;
+}
+
+
+/*   順番にふわ   */
+
+.fadeUp-delay {
+    animation-name: fadeUp-delay-Anime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUp-delay-Anime {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/*    section    */
+
+/* section { */
+/* padding: ; */
+/* border: 1px solid red; */
+/* } */
+
+.wrapper-group01 {
+    margin: 10vh 2%;
+    /* border: 1px solid blue; */
+}
+
+.wrapper-group02 {
+    margin: 10vh 10%;
+    /* border: 1px solid green; */
+}
+
+/*   h2 before after   */
+
+h3 {
+    width: min-content;
+    margin: 50px auto;
+    font-size: 3.2rem;
+    position: relative;
+}
+
+h3::before,
+h3::after {
+    content: "";
+    width: 150px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    background: #FFF;
+}
+
+h3::before {
+    right: 100%;
+    transform: translateX(-30px);
+}
+
+h3::after {
+    left: 100%;
+    transform: translateX(30px);
+}
+
+
+
+/*   TOP   */
+
+
+.top-image {
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    position: relative;
+}
+
+.top-image img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: slideAnime 30s ease infinite;
+}
+
+.top-image img:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.top-image img:nth-of-type(2) {
+    animation-delay: 10s;
+}
+
+.top-image img:nth-of-type(3) {
+    animation-delay: 20s;
+}
+
+@keyframes slideAnime {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 1;
+    }
+
+    41% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+
+
+
+
+
+
+/*   SPOT   */
+
+.spot-layout {
+    width: 100%;
+}
+
+.spot-list {
+    width: 100%;
+    display: flex;
+    gap: 2%;
+    justify-content: space-between;
+}
+
+.spot-list-li {
+    width: 400px;
+    min-height: 450px;
+    padding: 2%;
+    background: #fefefe;
+}
+
+.spot-img {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.spot-img::before {
+    content: "spot";
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 100px;
+    height: 100px;
+    padding-top: 35px;
+    border-radius: 50%;
+    background: #202020d9;
+    color: #F6F6F6;
+}
+
+.spot-title {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.spot-text {
+    font-size: 0.9rem;
+    text-align: justify;
+}
+
+/*   FOOD   */
+
+.food-list-li {
+    opacity: 0;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+.food-right {
+    margin-left: auto;
+}
+
+.food-img {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    border: 4px solid #F6F6F6;
+}
+
+.food-img::before {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #aa311ec4;
+    z-index: -1;
+}
+
+.food-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.food-about {
+    position: relative;
+    width: 50%;
+}
+
+.food-title {
+    text-align: left;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.food-text {
+    font-size: 0.9rem;
+    text-align: justify;
+}
+
+.food-a {
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    display: inline-block;
+    width: 300px;
+    height: 60px;
+    margin-right: 2%;
+    line-height: 60px;
+    /* opacity: 0; */
+}
+
+
+/*   ABOUT   */
+
+#about {
+    background: #962c1c;
+    color: #F6F6F6;
+    width: 100vw;
+    height: inherit;
+    padding: 30px 0;
+    font-weight: 100;
+}
+
+
+
+.about-text {
+    font-size: 1.3rem;
+}
+
+.about-text span {
+    display: block;
+    padding: 1rem;
+}
+
+
+
+
+
+footer {
+    background: #962c1c;
+    color: #F6F6F6;
+    width: 100vw;
+    height: inherit;
+    padding: 10px 1%;
+    text-align: right;
+    /* border: 1px solid red; */
+}
+
+.footer-content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 10px 1%;
+    /* border: 1px solid blue; */
+}
+
+.sns-link {
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+}
+
+.copyright {
+    display: inline-block;
+    font-size: 0.75rem;
+}
+
+
+
+
+
+
+
+@media(max-width:990px) {
+
+    .header-nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        padding-top: 70px;
+        /* visibility: hidden; */
+        overflow-y: auto;
+        z-index: 20;
+        transition: 0.5s;
+    }
+
+    .open .hamburger-menu {
+        display: block;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        /* visibility: visible; */
+    }
+
+    .hamburger-menu ul li {
+        margin-top: 30px;
+    }
+
+    .hamburger-menu ul li a {
+        display: block;
+        font-size: 22px;
+        letter-spacing: .3em;
+        color: #F6F6F6;
+
+    }
+
+    .toggle_btn {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-left: auto;
+        margin-right: 1.5%;
+        cursor: pointer;
+        position: relative;
+        top: 0;
+        right: 0;
+        z-index: 30;
+    }
+
+    .toggle_btn span {
+        width: 40px;
+        height: 2px;
+        background-color: #202020;
+        display: block;
+        position: absolute;
+        left: 0;
+        transition: 0.5s;
+    }
+
+    .toggle_btn span:nth-child(1) {
+        top: 30%;
+    }
+
+    .toggle_btn span:nth-child(2) {
+        top: 60%;
+    }
+
+
+
+    .open .toggle_btn span {
+        background-color: #F6F6F6;
+    }
+
+    .open .toggle_btn span:nth-child(1) {
+        transform: translateY(5.8px) rotate(-45deg);
+    }
+
+
+
+    .open .toggle_btn span:nth-child(2) {
+        transform: translateY(-5.8px) rotate(45deg);
+    }
+
+    /* .mask {
+        display: none;
+        transition: 0.5s ease;
+    } */
+
+    .open .mask {
+        width: 100%;
+        height: 100%;
+        background-color: #202020;
+        cursor: pointer;
+        display: block;
+        opacity: 0.9;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        transition: 0.5s;
+    }
+
+
+
+    /*   h3   */
+
+    h3 {
+        font-size: 2.6rem;
+    }
+
+    .spot-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+
+    }
+
+    .spot-img {
+        margin-bottom: 20px;
+    }
+
+    .spot-list-li {
+        padding: 15px;
+    }
+
+
+    /* .spot-title  {
+        font-size: 0.9rem;
+    }
+
+    .spot-text {
+        font-size: 0.75rem;
+    } */
+
+    .food-right {
+        margin-left: 0;
+    }
+
+
+    /*   ABOUT   */
+
+    #about {
+        width: 100vw;
+        height: 500px;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+    }
+
+
+
+}
+
+
+
+
+@media(max-width:900px) {
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h3::before,
+    h3::after {
+        width: 50px;
+    }
+
+    h3::before {
+        transform: translateX(-10px);
+    }
+
+    h3::after {
+        transform: translateX(10px);
+    }
+
+
+    .spot-list-li {
+        height: 500px;
+    }
+
+    .food-list-li {
+        height: inherit;
+        flex-direction: column;
+    }
+
+    .food-img,
+    .food-about {
+        width: 100%;
+    }
+
+    .food-img {
+        height: 300px;
+    }
+
+    .food-title {
+        margin-top: 30px;
+    }
+
+    .food-a {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+}
+
+
+@media(max-width:571px) {
+    .spot-img::before {
+        content: "spot";
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        width: 80px;
+        height: 80px;
+        padding-top: 25px;
+        border-radius: 50%;
+        background: #202020d9;
+        color: #F6F6F6;
+    }
+
+
+    .food-list-li {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
+
+    .food-img,
+    .food-about {
+        width: 100%;
+    }
+
+    .food-img {
+        height: 200px;
+    }
+
+    .food-title {
+        margin-top: 30px;
+    }
+
+    .food-a {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+}
